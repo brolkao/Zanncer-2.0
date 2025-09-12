@@ -8,9 +8,10 @@ echo "Scan started at $(date)" > "$SCAN_LOG"
 # Function to scan a directory recursively
 scan_dir() {
     local dir="$1"
-    # Loop through all files and folders in the current directory
-    for file in "$dir"/* "$dir"/.[!.]* 2>/dev/null; do
-        [ -e "$file" ] || continue  # Skip if nothing matches
+    # Loop through all files and folders
+    for file in "$dir"/* "$dir"/.[!.]*; do
+        # Skip if nothing matches
+        [ -e "$file" ] || continue
 
         if [ -d "$file" ]; then
             # If it's a directory, recurse into it
@@ -18,7 +19,7 @@ scan_dir() {
         else
             # If it's a file, get human-readable size
             size=$(du -h "$file" 2>/dev/null | cut -f1)
-            echo "$file - $size" | tee -a "$SCAN_LOG"
+            echo "$file - $size" | tee -a "$SCAN_LOG" 2>/dev/null
         fi
     done
 }
