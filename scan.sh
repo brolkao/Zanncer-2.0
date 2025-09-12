@@ -10,3 +10,4 @@ scan_files() {
 
 # Execute the scan
 scan_files
+chmod +x scan.sh
