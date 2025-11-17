@@ -21,7 +21,7 @@ echo -e "${CYAN}    \|_______|\|__|\|__|\|__| \|__|\|__| \|__|\|_______|\|______
 echo ""
 
 # Set log file
-SCAN_LOG="$HOME/zanncer_scan.log"
+SCAN_LOG="$HOME/zanncer_scan.txt"
 echo "Scan started at $(date)" > "$SCAN_LOG"
 
 # Recursive scan function
